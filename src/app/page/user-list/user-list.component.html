@@ -57,7 +57,7 @@
               <button [routerLink]="['user/' + user.id]" class="btn btn-info">
                 <i class="fa fa-pencil"></i>
               </button>
-              <button (click)="onDelete(user)" class="btn btn-danger">
+              <button (click)="onConfirmDelete(user)" class="btn btn-danger">
                 <i class="fa fa-trash"></i>
               </button>
             </div>
@@ -67,3 +67,4 @@
     </table>
   </div>
 </div>
+<app-confirm-dialog></app-confirm-dialog>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { User } from 'src/app/model/user';
+import { ConfirmDialogService } from 'src/app/service/confirm-dialog.service';
 import { UserService } from 'src/app/service/user.service';
 
 @Component({
@@ -14,6 +15,7 @@ export class UserListComponent implements OnInit {
 
   constructor(
     private userService: UserService,
+    private confirmDialogService: ConfirmDialogService,
   ) { }
 
   ngOnInit(): void {
@@ -22,6 +24,13 @@ export class UserListComponent implements OnInit {
 
   onDelete(user: User): void {
     this.userService.remove(user);
+  }
+
+  onConfirmDelete(user: User): void {
+    this.confirmDialogService.confirmThis(
+      `Are you sure to DELETE ${user.name} user?`, () => {
+        this.onDelete(user);
+      }, () => { })
   }
 
   // sorter
