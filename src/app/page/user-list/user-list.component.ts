@@ -46,6 +46,7 @@ export class UserListComponent implements OnInit {
 
   //filter
   phrase: string = '';
+  filterKey: string = 'name';
 
   onChangePhrase(event: Event): void {
     this.phrase = (event.target as HTMLInputElement).value;
